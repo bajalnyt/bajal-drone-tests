@@ -11,6 +11,3 @@ steps:
   image: busybox
   commands:
   - echo "README.md was changed”
-  when:
-    paths:
-    - README.md
