@@ -13,5 +13,5 @@ steps:
   commands:
   - echo "README.md was changed"
   - touch file
-  - mv file file_${DRONE_COMMIT}
+  - mv file $file_{DRONE_COMMIT}
   - ls
