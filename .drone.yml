@@ -11,6 +11,9 @@ steps:
   image: busybox
   commands:
   - echo "README.md was changed"
+  - touch file
+  - mv file file_$DRONE_COMMIT
+  - ls
   when:
     paths:
       include:
