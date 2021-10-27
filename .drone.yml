@@ -1,6 +1,7 @@
 ---
 kind: pipeline
 name: default
+type: docker
 
 platform:
   os: linux
@@ -14,7 +15,3 @@ steps:
   - touch file
   - mv file file_$DRONE_COMMIT
   - ls
-  when:
-    paths:
-      include:
-      - README.md
