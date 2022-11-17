@@ -8,10 +8,13 @@ platform:
   arch: amd64
 
 steps:
-- name: message
-  image: busybox
-  commands:
-  - echo "README.md was changed"
-  - touch file
-  - mv file $file_{DRONE_COMMIT}
-  - ls
+  - name: message
+    image: busybox
+    environment:
+      DRONE_COMMIT_SHA_FIRST_SEVEN: c${DRONE_COMMIT_SHA:0:7}
+    commands:
+      - echo "README.md was changed"
+      - touch file
+      - mv file $file_{DRONE_COMMIT}
+      - ls
+      - echo $DRONE_COMMIT_SHA_FIRST_SEVEN
