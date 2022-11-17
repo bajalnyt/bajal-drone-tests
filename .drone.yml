@@ -12,5 +12,9 @@ steps:
     image: busybox
     environment:
       DRONE_COMMIT_SHA_FIRST_SEVEN: c${DRONE_BRANCH//\//-}-c${DRONE_COMMIT_SHA:0:7}
+      SOME_VAL: 0598408
+      SOME_VAL1: 598408
     commands:
       - echo "$DRONE_COMMIT_SHA_FIRST_SEVEN"
+      - echo "$SOME_VAL"
+      - echo "$SOME_VAL1"
