@@ -11,6 +11,6 @@ steps:
   - name: message
     image: busybox
     environment:
-      DRONE_COMMIT_SHA_FIRST_SEVEN: c${DRONE_COMMIT_SHA:0:7}
+      DRONE_COMMIT_SHA_FIRST_SEVEN: c${DRONE_BRANCH//\//-}-c${DRONE_COMMIT_SHA:0:7}
     commands:
       - echo "$DRONE_COMMIT_SHA_FIRST_SEVEN"
