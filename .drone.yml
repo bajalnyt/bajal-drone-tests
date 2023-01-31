@@ -29,4 +29,4 @@ steps:
       - echo "$SOME_VAL1"
     when:
       branch:
-        - patch-**
+        - p1atch-*
