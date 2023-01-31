@@ -16,9 +16,20 @@ platform:
   os: linux
   arch: amd64
 
+clone:
+  disable: true
+
 steps:
+  - name: clone
+    image: drone/git:1.2.0-linux-amd64
+    pull: always
+    commands:
+      - /usr/local/bin/clone
+
   - name: message
     image: busybox
+    depends_on:
+      - clone
     environment:
       DRONE_COMMIT_SHA_FIRST_SEVEN: c${DRONE_BRANCH//\//-}-c${DRONE_COMMIT_SHA:0:7}
       SOME_VAL: 0598408
