@@ -20,6 +20,6 @@ steps:
       - echo "$SOME_VAL1"
     when:
       branch:
-        - "patch-**"
+        - patch-**
       # event:
       #   - pull_request
