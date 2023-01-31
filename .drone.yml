@@ -18,3 +18,8 @@ steps:
       - echo "$DRONE_COMMIT_SHA_FIRST_SEVEN"
       - echo "$SOME_VAL"
       - echo "$SOME_VAL1"
+    when:
+      branch:
+        - "patch-**"
+      # event:
+      #   - pull_request
