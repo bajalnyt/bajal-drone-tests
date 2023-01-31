@@ -3,14 +3,14 @@ kind: pipeline
 name: default
 type: docker
 
-# trigger:
-#   ref:
-#     include:
-#       - refs/heads/main
-#       - refs/heads/patch-*/**
-#       - refs/pull/**
-#       - refs/pull-requests/**
-#       - refs/merge-requests/**
+trigger:
+  ref:
+    include:
+      - refs/heads/main
+      - refs/heads/patch/**
+      - refs/pull/**
+      - refs/pull-requests/**
+      - refs/merge-requests/**
 
 platform:
   os: linux
