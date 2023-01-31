@@ -7,7 +7,7 @@ trigger:
   ref:
     include:
       - refs/heads/main
-      - refs/heads/patch/**
+      - refs/heads/patch-*/**
       - refs/pull/**
       - refs/pull-requests/**
       - refs/merge-requests/**
