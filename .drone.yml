@@ -3,6 +3,15 @@ kind: pipeline
 name: default
 type: docker
 
+trigger:
+  ref:
+    include:
+      - refs/heads/main
+      - refs/heads/patch/**
+      - refs/pull/**
+      - refs/pull-requests/**
+      - refs/merge-requests/**
+
 platform:
   os: linux
   arch: amd64
@@ -21,5 +30,3 @@ steps:
     when:
       branch:
         - patch-**
-      # event:
-      #   - pull_request
