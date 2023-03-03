@@ -51,9 +51,9 @@ steps:
       SOME_VAL: 0598408
       SOME_VAL1: 598408
     commands:
-      - echo "```sh" > tempfile
+      - echo '```sh' > tempfile
       - cat sample.sh >> tempfile
-      - echo "```" > tempfile
+      - echo '```' >> tempfile
     when:
       event:
         - pull_request
