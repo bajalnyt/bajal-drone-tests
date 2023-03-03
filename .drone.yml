@@ -26,7 +26,23 @@ steps:
     commands:
       - /usr/local/bin/clone
 
-  - name: message
+  # - name: message
+  #   image: busybox
+  #   depends_on:
+  #     - clone
+  #   environment:
+  #     DRONE_COMMIT_SHA_FIRST_SEVEN: c${DRONE_BRANCH//\//-}-c${DRONE_COMMIT_SHA:0:7}
+  #     SOME_VAL: 0598408
+  #     SOME_VAL1: 598408
+  #   commands:
+  #     - echo "$DRONE_COMMIT_SHA_FIRST_SEVEN"
+  #     - echo "$SOME_VAL"
+  #     - echo "$SOME_VAL1"
+  #   when:
+  #     branch:
+  #       - patch-*
+
+  - name: prepare-file
     image: busybox
     depends_on:
       - clone
@@ -35,9 +51,19 @@ steps:
       SOME_VAL: 0598408
       SOME_VAL1: 598408
     commands:
-      - echo "$DRONE_COMMIT_SHA_FIRST_SEVEN"
-      - echo "$SOME_VAL"
-      - echo "$SOME_VAL1"
+      - echo "```sh" > tempfile
+      - cat sample.sh >> tempfile
+      - echo "```" > tempfile
     when:
-      branch:
-        - patch-*
+      event:
+        - pull_request
+
+  - name: print-tf-plan-output
+    image: jmccann/drone-github-comment:1
+    settings:
+      message_file: tempfile
+    when:
+      event:
+        - pull_request
+    depends_on:
+      - prepare-file
