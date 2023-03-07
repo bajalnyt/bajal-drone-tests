@@ -10,11 +10,15 @@ platform:
 steps:
   - name: message
     image: busybox
-    environment:
-      DRONE_COMMIT_SHA_FIRST_SEVEN: c${DRONE_BRANCH//\//-}-c${DRONE_COMMIT_SHA:0:7}
-      SOME_VAL: 0598408
-      SOME_VAL1: 598408
+    # environment:
+    #   DRONE_COMMIT_SHA_FIRST_SEVEN: c${DRONE_BRANCH//\//-}-c${DRONE_COMMIT_SHA:0:7}
+    #   SOME_VAL: 0598408
+    #   SOME_VAL1: 598408
     commands:
-      - echo "$DRONE_COMMIT_SHA_FIRST_SEVEN"
-      - echo "$SOME_VAL"
+      - echo "$DRONE_BRANCH"
+      - if [[ "$DRONE_BRANCH" =~ ^(?![a-zA-z]*-[0-9]*) ]]; then |
+        echo "Valid branch name" |
+        else |
+        echo "Invalid branch name"; exit 1 |
+        fi
       - echo "$SOME_VAL1"
