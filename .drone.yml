@@ -15,11 +15,9 @@ steps:
     #   SOME_VAL: 0598408
     #   SOME_VAL1: 598408
     commands:
-      - echo "$DRONE_BRANCH"
       - |
         if [[ "$DRONE_BRANCH" =~ "^([a-zA-z]*-[0-9]*)" ]]; then 
-          echo "Valid branch name" 
+          echo "Valid branch name $DRONE_BRANCH" 
         else 
-          echo "Invalid branch name"; exit 1 
+          echo "Invalid branch name $DRONE_BRANCH" ; exit 1 
         fi
-      - echo "$SOME_VAL1"
