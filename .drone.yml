@@ -16,9 +16,9 @@ steps:
     #   SOME_VAL1: 598408
     commands:
       - |
-        set -x
-        if [[ "$DRONE_BRANCH" =~ "^([a-zA-z]*-[0-9]*)" ]]; then 
+        ## TODO remove feature/aws-ma-poc later
+        if [[ "$DRONE_BRANCH" =~ "^([a-zA-z]*-[0-9]*)" || "$DRONE_BRANCH" = "feature/aws-ma-poc" ]]; then 
           echo "Valid branch name $DRONE_BRANCH" 
         else 
-          echo "Invalid branch name $DRONE_BRANCH. Please create branch with the format '<JIRA Ticket>-<summary of change>', eg: SMT-1-create-entity" ; exit 1 
+          echo "Invalid branch name $DRONE_BRANCH. Please create your branch with the format '<JIRA Ticket>-<summary of change>', eg: SMT-1-create-entity" ; exit 1 
         fi
