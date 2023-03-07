@@ -16,6 +16,7 @@ steps:
     #   SOME_VAL1: 598408
     commands:
       - |
+        set -x
         if [[ "$DRONE_BRANCH" =~ "^([a-zA-z]*-[0-9]*)" ]]; then 
           echo "Valid branch name $DRONE_BRANCH" 
         else 
