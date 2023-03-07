@@ -10,11 +10,15 @@ platform:
 steps:
   - name: message
     image: busybox
-    environment:
-      DRONE_COMMIT_SHA_FIRST_SEVEN: c${DRONE_BRANCH//\//-}-c${DRONE_COMMIT_SHA:0:7}
-      SOME_VAL: 0598408
-      SOME_VAL1: 598408
+    # environment:
+    #   DRONE_COMMIT_SHA_FIRST_SEVEN: c${DRONE_BRANCH//\//-}-c${DRONE_COMMIT_SHA:0:7}
+    #   SOME_VAL: 0598408
+    #   SOME_VAL1: 598408
     commands:
-      - echo "$DRONE_COMMIT_SHA_FIRST_SEVEN"
-      - echo "$SOME_VAL"
-      - echo "$SOME_VAL1"
+      - |
+        set -x
+        if [[ "$DRONE_BRANCH" =~ "^([a-zA-z]*-[0-9]*)" ]]; then 
+          echo "Valid branch name $DRONE_BRANCH" 
+        else 
+          echo "Invalid branch name $DRONE_BRANCH. Please create branch with the format '<JIRA Ticket>-<summary of change>', eg: SMT-1-create-entity" ; exit 1 
+        fi
