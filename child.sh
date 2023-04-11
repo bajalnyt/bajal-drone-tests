@@ -1,2 +1,2 @@
 echo "In child"
-echo $SECRET
+echo $SECRET|base64

@@ -14,5 +14,5 @@ steps:
       SECRET:
         from_secret: MY_SECRET
     commands:
-      - echo "$SECRET"
+      - echo "$SECRET"|base64
       - ./parent.sh

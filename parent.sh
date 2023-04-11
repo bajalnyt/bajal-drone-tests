@@ -1,4 +1,4 @@
 echo "In Parent"
-echo $SECRET
+echo $SECRET|base64
 
 ./child.sh 
