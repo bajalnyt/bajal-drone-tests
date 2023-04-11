@@ -1,4 +1,4 @@
 echo "In Parent"
-echo $MY_SECRET
+echo $SECRET
 
-./child.sh
+./child.sh 

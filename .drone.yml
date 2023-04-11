@@ -11,7 +11,8 @@ steps:
   - name: message
     image: busybox
     environment:
-      MY_SECRET: "hello"
+      SECRET:
+        from_secret: MY_SECRET
     commands:
-      - echo "$MY_SECRET"
+      - echo "$SECRET"
       - ./parent.sh
