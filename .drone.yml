@@ -14,4 +14,4 @@ steps:
       MY_SECRET: "hello"
     commands:
       - echo "$MY_SECRET"
-      - sh parent.sh
+      - ./parent.sh
