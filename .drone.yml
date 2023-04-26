@@ -3,6 +3,12 @@ kind: pipeline
 name: default
 type: docker
 
+trigger:
+  branch:
+    - main
+  event:
+    - tag
+
 platform:
   os: linux
   arch: amd64
