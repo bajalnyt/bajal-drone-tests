@@ -8,11 +8,14 @@ platform:
   arch: amd64
 
 steps:
+  - name: semver
+    image: cedrichopf/drone-semver
+    settings:
+      initial_version: 1.0.0
+      autoincrement: true
+      file: CHANGELOG.md
+
   - name: message
     image: busybox
-    environment:
-      SECRET:
-        from_secret: MY_SECRET
     commands:
-      - echo "$SECRET"|base64
-      - ./parent.sh
+      - cat semver
