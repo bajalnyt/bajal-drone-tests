@@ -18,4 +18,6 @@ steps:
   - name: message
     image: busybox
     commands:
+      - echo $DRONE_SEMVER
+      - echo $DRONE_SEMVER_SHORT
       - cat semver
